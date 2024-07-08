@@ -6,7 +6,7 @@ $('#formEnter').on('click', function (e) {
   $('#city').text(city);
 
   $.get({
-    url: `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=483a53306eacda4704b24e0d2bddcae4`,
+    url: `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=483a53306eacda4704b24e0d2bddcae4`,
   })
     .then(function (data) {
       $('#cardGrid').html('');
@@ -21,7 +21,7 @@ $('#formEnter').on('click', function (e) {
 //Current data handler
 function handleCurrCity(lat, lon) {
   $.get({
-    url: `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=483a53306eacda4704b24e0d2bddcae4`,
+    url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=483a53306eacda4704b24e0d2bddcae4`,
   })
     .then(function (data) {
       if (!cities.includes(data.name)) {
@@ -41,7 +41,7 @@ function handleCurrCity(lat, lon) {
 //City forecast request
 function requestCityData(lat, lon) {
   $.get({
-    url: `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=483a53306eacda4704b24e0d2bddcae4`
+    url: `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=483a53306eacda4704b24e0d2bddcae4`
   })
     .then(function (data) {
       for (let i = 0; i < data.list.length; (i += 8)) {
