@@ -21,7 +21,7 @@ $('#formEnter').on('click', function (e) {
 //Current data handler
 function handleCurrCity(lat, lon) {
   $.get({
-    url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=483a53306eacda4704b24e0d2bddcae4`,
+    url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=483a53306eacda4704b24e0d2bddcae4/`,
   })
     .then(function (data) {
       if (!cities.includes(data.name)) {
