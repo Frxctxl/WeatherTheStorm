@@ -24,11 +24,14 @@ function handleCurrCity(lat, lon) {
     url: `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=483a53306eacda4704b24e0d2bddcae4`,
   })
     .then(function (data) {
-      console.log(data);
+      if (!cities.includes(data.name)) {
+        cities.push(data.name);
+        localStorage.setItem('cities', cities);
+      }
       $('#currBox').css('display', 'block')
       $('#currBox').append(`
       <p class="title">${data.name} ${data.dt}</p>
-<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">
+      <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">
       <p>${data.main.temp} °F</p>
       <p>${data.main.humidity}%</p>
       <p>${data.wind.speed} MPH</p>
@@ -49,16 +52,15 @@ function requestCityData(lat, lon) {
 
 //Create forecast cards
 function addCard(dayData) {
-  console.log(dayData.dt_txt);
   $('#cardGrid').append(`   
-<div class="card cell mb*-0">
-<p class="title">${dayData.dt_txt}</p>
-<img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png">
-      <div class="card-content">
-<p>Temp: ${dayData.main.temp} °F</p>
-<p>Humidity: ${dayData.main.humidity}%</p>
-<p>Wind: ${dayData.wind.speed} MPH</p>
-      </div>
+    <div class="card mb*-0">
+    <p class="title is-5">${dayData.dt_txt}</p>
+    <img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png">
+    <div class="card-content">
+      <p>Temp: ${dayData.main.temp} °F</p>
+      <p>Humidity: ${dayData.main.humidity}%</p>
+      <p>Wind: ${dayData.wind.speed} MPH</p>
+    </div>
     </div>
 `)
 }

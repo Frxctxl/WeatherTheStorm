@@ -9,26 +9,29 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="title">Weather The Storm</h1>
+  <header class="hero">
+    <h1 class="title hero-body">Weather The Storm</h1>
   </header>
-  <form class="form">
-    <div class="field">
-      <label for="cityInput" class="label">Enter City</label>
-      <input type="text" class="input" id="cityInput" placeholder="City Name" required>
-    </div>
-    <div class="field">
-      <div class="control">
-        <button class="button" id="formEnter">Submit</button>
+  <div class="container columns">
+    <form class="form column">
+      <div class="field">
+        <label for="cityInput" class="label">Enter City</label>
+        <input type="text" class="input" id="cityInput" placeholder="City Name" required>
       </div>
+      <div class="field">
+        <div class="control">
+          <button class="button" id="formEnter">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="column">
+      <div class="box" style="display: none" id="currBox"></div>
+
+      <div id="cardGrid" class="section"></div>
     </div>
-  </form>
 
-  <div class="box" style="display: none" id="currBox">
   </div>
-
-  <div id="cardGrid" class="content grid"></div>
-
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
   <script src="js/script.js">
